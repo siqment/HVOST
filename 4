@@ -1,0 +1,28 @@
+def shortest_distance(s, c):
+    # Создаем пустой массив answer длиной равной длине строки s
+    answer = [0] * len(s)
+    
+    # Ищем индексы всех вхождений символа c в строку s
+    indices = [i for i, x in enumerate(s) if x == c]
+    
+    # Проходимся по всем индексам строки s
+    for i in range(len(s)):
+        # Если текущий символ равен символу c, то расстояние равно 0
+        if s[i] == c:
+            answer[i] = 0
+        else:
+            # Ищем ближайший индекс вхождения символа c
+            min_dist = float('inf')  # Устанавливаем начальное значение минимального расстояния бесконечностью
+            for index in indices:
+                # Вычисляем расстояние от текущего индекса до индекса вхождения символа c
+                dist = abs(i - index)
+                if dist < min_dist:
+                    min_dist = dist
+            answer[i] = min_dist
+    
+    return answer
+# Пример использования
+s = "loveleetcode"
+c = "e"
+result = shortest_distance(s, c)
+print(result)

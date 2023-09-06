@@ -1,0 +1,20 @@
+def sum_of_even_nums(nums, queries):
+    answer = []
+    sum_even = sum(num for num in nums if num % 2 == 0)
+    
+    for value, index in queries:
+        old_num = nums[index]
+        nums[index] += value
+        
+        if old_num % 2 == 0:
+            sum_even -= old_num
+        if nums[index] % 2 == 0:
+            sum_even += nums[index]
+        
+        answer.append(sum_even)
+    
+    return answer
+nums = [1, 2, 3, 4]
+queries = [[1, 0], [-3, 1], [-4, 0], [2, 3]]
+result = sum_of_even_nums(nums, queries)
+print(result)  # [8, 6, 2, 4]

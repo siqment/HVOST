@@ -1,0 +1,11 @@
+def findComplement(n):
+    binary = bin(n)[2:]  # получаем двоичное представление числа без префикса '0b'
+    complement = ''
+    for digit in binary:
+        if digit == '0':
+            complement += '1'
+        else:
+            complement += '0'
+    return int(complement, 2)  # переводим обратно в десятичную систему
+n = int(input("Введите число: "))
+print(findComplement(n))
